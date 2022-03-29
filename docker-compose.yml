@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "3000:80"
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    env_file:
+      - ./app/.env
+    ports:
+      - "8000:8000"
